@@ -1,0 +1,15 @@
+@import "~@angular/material/theming";
+
+.header-block {
+  padding: 1rem ;
+  border-bottom: 1px solid gray;
+  display: flex;
+  justify-content: flex-end;
+
+}
+.main-page-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
