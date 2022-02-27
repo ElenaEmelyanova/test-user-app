@@ -1,8 +1,8 @@
 <div class="header-block">
   <button color="primary" mat-stroked-button [matMenuTriggerFor]="menu">Menu</button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
+    <a [routerLink]="['/welcome']" mat-menu-item>Go to Welcome Page</a>
+    <a [routerLink]="['/users']" mat-menu-item>Go to Users Page</a>
   </mat-menu>
 </div>
 <div class="main-page-block">

@@ -21,6 +21,10 @@
     "@angular/platform-browser": "~13.2.3",
     "@angular/platform-browser-dynamic": "~13.2.3",
     "@angular/router": "~13.2.3",
+    "@ngneat/until-destroy": "^9.0.0",
+    "@ngx-resource/core": "^10.0.0",
+    "@ngx-resource/handler-ngx-http": "^10.0.0",
+    "json-typescript": "^1.1.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.11.4"

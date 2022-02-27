@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CollectionService } from '../../services/collection.service';
+import { User } from "../../models/user.model";
+import { untilDestroyed } from "@ngneat/until-destroy";
 
 @Component({
   selector: 'app-users',
@@ -7,7 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  public users:User[] = [];
+
+  constructor(private collectionService: CollectionService) {
+    this.collectionService.getUsersCollection()
+      .pipe(
+        untilDestroyed(this)
+      )
+      .subscribe(data => {
+        this.users = data;
+      });
+  }
 
   ngOnInit() {
   }

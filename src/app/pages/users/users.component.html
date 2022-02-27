@@ -1,1 +1,14 @@
-<p>users works!</p>
+<ng-container *ngIf="users.length; else noUsers">
+  <div class="list-wrapper-block">
+    <h1>User list</h1>
+    <ul class="user-list">
+      <li *ngFor="let user of users">
+        #{{user.id}} {{user.name}} {{user.surname}}
+      </li>
+    </ul>
+  </div>
+</ng-container>
+
+<ng-template #noUsers>
+  No users
+</ng-template>

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MockInterceptor } from './mock/mock.interceptor';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CollectionService } from "./services/collection.service";
+import { MockPermissionsGuard } from "./guards/permissions.guard";
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { AppComponent } from './app.component';
     NoopAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    CollectionService,
+    MockPermissionsGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: MockInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
