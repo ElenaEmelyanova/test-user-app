@@ -1,12 +1,20 @@
 <ng-container *ngIf="users.length; else noUsers">
   <div class="list-wrapper-block">
     <h1>User list</h1>
-    <ul class="user-list">
+    <ul class="user-list" *ngIf="users.length < 500; else longUserList">
       <li *ngFor="let user of users">
         #{{user.id}} {{user.name}} {{user.surname}}
       </li>
     </ul>
+    <ng-template #longUserList>
+      <ul class="user-list viewport">
+        <li *uiScroll="let user of datasource" class="li">
+          #{{user.id}} {{user.name}} {{user.surname}}
+        </li>
+      </ul>
+    </ng-template>
   </div>
+
 </ng-container>
 
 <ng-template #noUsers>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CollectionService } from '../../services/collection.service';
 import { User } from "../../models/user.model";
 import { untilDestroyed } from "@ngneat/until-destroy";
+import { IDatasource } from "ngx-ui-scroll";
 
 @Component({
   selector: 'app-users',
@@ -11,6 +12,16 @@ import { untilDestroyed } from "@ngneat/until-destroy";
 export class UsersComponent implements OnInit {
 
   public users:User[] = [];
+  public datasource: IDatasource = {
+    get: (index, count, success) => {
+      const data = this.users;
+      success(data);
+    },
+    settings: {
+      minIndex: 0,
+      maxIndex: this.users.length -1
+    }
+  };
 
   constructor(private collectionService: CollectionService) {
     this.collectionService.getUsersCollection()
